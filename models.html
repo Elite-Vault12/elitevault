@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELITE VAULT | Exclusive Model Agency</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 5px;
+      transition: var(--transition);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+    
+    /* Add this style to make text uncopyable */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--bg);
+    }
+    
+    /* Add this to prevent image dragging */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+    }
+    
+    :root {
+      --primary: #e00024;
+      --primary-light: rgba(224, 0, 36, 0.3);
+      --bg: #0a0a0a;
+      --card-bg: #141414;
+      --text: #ffffff;
+      --text-secondary: #aaaaaa;
+      --text-tertiary: #666666;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --gold: #D4AF37;
+      --platinum: #E5E4E2;
+      --diamond: #B9F2FF;
+      --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Premium Logo */
+    .logo {
+      font-family: 'Cinzel', 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    
+    .logo span {
+      color: var(--gold);
+      position: relative;
+      font-weight: 400;
+    }
+    
+    .logo span::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    
+    .logo:hover span::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Image Logo */
+    .img-logo {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.5);
+      backdrop-filter: blur(12px);
+      transform: translateY(0);
+      transition: transform 0.6s var(--ease-out-expo), background 0.4s ease;
+      height: 60px;
+    }
+    
+    header.hidden {
+      transform: translateY(-100%);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      margin-right: auto;
+      margin-left: 40px;
+    }
+    
+    .nav-btn {
+      position: relative;
+      padding: 8px 15px;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    
+    .nav-btn:hover {
+      color: var(--text);
+    }
+    
+    .nav-btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    .nav-btn.active {
+      color: var(--text);
+    }
+    
+    .nav-btn.active::before {
+      transform: scaleX(1);
+      background: var(--primary);
+    }
+    
+    /* 3D Button */
+    .nav-btn-3d {
+      background: linear-gradient(135deg, var(--gold), var(--primary));
+      color: white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-left: 15px;
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    .nav-btn-3d:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(224, 0, 36, 0.5);
+      color: white;
+    }
+    
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: var(--bg);
+      z-index: 999;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu.active {
+      display: flex;
+    }
+    
+    /* Mobile 3D Button */
+    .mobile-nav-btn-3d {
+      background: linear-gradient(135deg, var(--gold), var(--primary));
+      color: white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    /* Animated Search System */
+    .search-container {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      transition: var(--transition);
+    }
+    
+    .search-container.active {
+      width: 300px;
+    }
+    
+    .search-input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0 50px 0 20px;
+      border: none;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .search-container.active .search-input {
+      opacity: 1;
+    }
+    
+    .search-trigger {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    .search-trigger:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(224, 0, 36, 0.5);
+    }
+    
+    .search-trigger i {
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    .search-container.active .search-trigger {
+      background: var(--gold);
+    }
+    
+    /* Search Results Dropdown */
+    .search-results {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 350px;
+      max-height: 400px;
+      overflow-y: auto;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .search-container.active .search-results {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .search-result-item:hover {
+      background: rgba(224, 0, 36, 0.1);
+    }
+    
+    .search-result-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .search-result-info h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .search-result-info p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-result-info p i {
+      margin-right: 6px;
+      color: var(--primary);
+      font-size: 10px;
+    }
+    
+    .no-results {
+      padding: 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    /* Main Content */
+    .main-content {
+      padding-top: 100px;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+    
+    /* Page Title */
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .page-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      background: linear-gradient(to right, var(--gold), var(--platinum), var(--diamond));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    
+    .page-title p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+    
+    /* Filter Buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .filter-btn {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .filter-btn:hover {
+      background: rgba(224, 0, 36, 0.1);
+      color: var(--text);
+      border-color: var(--primary-light);
+    }
+    
+    .filter-btn.active {
+      background: var(--primary);
+      color: var(--text);
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    /* Alphabet Filter */
+    .alphabet-filter {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 30px;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+    
+    .alphabet-filter.active {
+      opacity: 1;
+      height: auto;
+      padding: 10px 0;
+    }
+    
+    .alphabet-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .alphabet-btn:hover {
+      background: rgba(224, 0, 36, 0.1);
+      color: var(--text);
+      border-color: var(--primary-light);
+    }
+    
+    .alphabet-btn.active {
+      background: var(--primary);
+      color: var(--text);
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    /* Models Grid */
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 0 5%;
+      margin-bottom: 50px;
+    }
+    
+    /* Model Card */
+    .model-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .model-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .model-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .model-image-container {
+      position: relative;
+      width: 100%;
+      padding-top: 133.33%; /* 4:3 aspect ratio */
+      overflow: hidden;
+    }
+    
+    .model-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out-expo);
+    }
+    
+    .model-card:hover .model-image {
+      transform: scale(1.05);
+    }
+    
+    .model-info {
+      padding: 20px;
+    }
+    
+    .model-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .model-stats {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .model-stat {
+      display: flex;
+      align-items: center;
+    }
+    
+    .model-stat i {
+      margin-right: 5px;
+      color: var(--gold);
+      font-size: 12px;
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      gap: 10px;
+    }
+    
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: var(--transition);
+    }
+    
+    .page-btn:hover {
+      background: rgba(224, 0, 36, 0.1);
+      color: var(--text);
+      border-color: var(--primary-light);
+    }
+    
+    .page-btn.active {
+      background: var(--primary);
+      color: var(--text);
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(224, 0, 36, 0.3);
+    }
+    
+    .page-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .page-dots {
+      color: var(--text-secondary);
+      padding: 0 10px;
+    }
+    
+    /* Footer */
+    footer {
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 30px 5%;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    
+    .footer-logo span {
+      color: var(--gold);
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .social-icon:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      color: var(--text-tertiary);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(224, 0, 36, 0.5);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-to-top:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top i {
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .models-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-buttons {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .search-container.active {
+        width: 250px;
+      }
+      
+      .search-results {
+        width: 280px;
+      }
+      
+      .page-title h1 {
+        font-size: 32px;
+      }
+      
+      .models-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .back-to-top {
+        width: 35px;
+        height: 35px;
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 20px;
+      }
+      
+      .search-container.active {
+        width: 200px;
+      }
+      
+      .search-results {
+        width: 100%;
+        right: -50px;
+      }
+      
+      .page-title h1 {
+        font-size: 28px;
+      }
+      
+      .models-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .filter-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .back-to-top {
+        width: 30px;
+        height: 30px;
+      }
+
+      .back-to-top i {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="mainHeader">
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="logo-container">
+      <img src="https://i.ibb.co.com/sd6CqKNr/Chat-GPT-Image-May-5-2025-04-00-30-AM.png" alt="ELITE VAULT Logo" class="img-logo">
+      <a href="#" class="logo">ELITE <span>VAULT</span></a>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button class="nav-btn" id="homeBtn">Home</button>
+      <button class="nav-btn active" id="modelsBtn">Models</button>
+      <button class="nav-btn" id="videosBtn">Videos</button>
+      <button class="nav-btn nav-btn-3d" id="threeDBtn">3D</button>
+    </div>
+    
+    <div class="search-container" id="searchContainer">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search models...">
+      <div class="search-trigger" id="searchTrigger">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="nav-btn" id="mobileHomeBtn">Home</button>
+    <button class="nav-btn active" id="mobileModelsBtn">Models</button>
+    <button class="nav-btn" id="mobileVideosBtn">Videos</button>
+    <button class="nav-btn mobile-nav-btn-3d" id="mobileThreeDBtn">3D</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="page-title">
+      <h1>Exclusive Models</h1>
+      <p>WHERE PLEASURE MEETS PERSONALITY</p>
+    </div>
+    
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" id="popularBtn">Popular</button>
+      <button class="filter-btn" id="alphabeticalBtn">Alphabetical</button>
+    </div>
+    
+    <!-- Alphabet Filter -->
+    <div class="alphabet-filter" id="alphabetFilter">
+      <button class="alphabet-btn" data-letter="all">All</button>
+      <button class="alphabet-btn" data-letter="a">A</button>
+      <button class="alphabet-btn" data-letter="b">B</button>
+      <button class="alphabet-btn" data-letter="c">C</button>
+      <button class="alphabet-btn" data-letter="d">D</button>
+      <button class="alphabet-btn" data-letter="e">E</button>
+      <button class="alphabet-btn" data-letter="f">F</button>
+      <button class="alphabet-btn" data-letter="g">G</button>
+      <button class="alphabet-btn" data-letter="h">H</button>
+      <button class="alphabet-btn" data-letter="i">I</button>
+      <button class="alphabet-btn" data-letter="j">J</button>
+      <button class="alphabet-btn" data-letter="k">K</button>
+      <button class="alphabet-btn" data-letter="l">L</button>
+      <button class="alphabet-btn" data-letter="m">M</button>
+      <button class="alphabet-btn" data-letter="n">N</button>
+      <button class="alphabet-btn" data-letter="o">O</button>
+      <button class="alphabet-btn" data-letter="p">P</button>
+      <button class="alphabet-btn" data-letter="q">Q</button>
+      <button class="alphabet-btn" data-letter="r">R</button>
+      <button class="alphabet-btn" data-letter="s">S</button>
+      <button class="alphabet-btn" data-letter="t">T</button>
+      <button class="alphabet-btn" data-letter="u">U</button>
+      <button class="alphabet-btn" data-letter="v">V</button>
+      <button class="alphabet-btn" data-letter="w">W</button>
+      <button class="alphabet-btn" data-letter="x">X</button>
+      <button class="alphabet-btn" data-letter="y">Y</button>
+      <button class="alphabet-btn" data-letter="z">Z</button>
+    </div>
+    
+    <!-- Models Grid -->
+    <div class="models-grid" id="modelsGrid"></div>
+    
+    <!-- Pagination -->
+    <div class="pagination" id="pagination">
+      <button class="page-btn" id="prevPage"><i class="fas fa-chevron-left"></i></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <span class="page-dots">...</span>
+      <button class="page-btn">10</button>
+      <button class="page-btn" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">ELITE <span>VAULT</span></div>
+    <div class="footer-social">
+      <a href="https://x.com/VillaNaughty" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/villa_qz/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 ELITE VAULT. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // DOM Elements
+    const searchContainer = document.getElementById('searchContainer');
+    const searchTrigger = document.getElementById('searchTrigger');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const mainHeader = document.getElementById('mainHeader');
+    const homeBtn = document.getElementById('homeBtn');
+    const modelsBtn = document.getElementById('modelsBtn');
+    const videosBtn = document.getElementById('videosBtn');
+    const threeDBtn = document.getElementById('threeDBtn');
+    const mobileHomeBtn = document.getElementById('mobileHomeBtn');
+    const mobileModelsBtn = document.getElementById('mobileModelsBtn');
+    const mobileVideosBtn = document.getElementById('mobileVideosBtn');
+    const mobileThreeDBtn = document.getElementById('mobileThreeDBtn');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const popularBtn = document.getElementById('popularBtn');
+    const alphabeticalBtn = document.getElementById('alphabeticalBtn');
+    const alphabetFilter = document.getElementById('alphabetFilter');
+    const modelsGrid = document.getElementById('modelsGrid');
+    const pagination = document.getElementById('pagination');
+    const prevPageBtn = document.getElementById('prevPage');
+    const nextPageBtn = document.getElementById('nextPage');
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    // Model data with custom URLs
+    const modelData = [
+      { id: 1, name: "Abigaiil Morris", image: "https://i.ibb.co.com/W4Nz0LPn/profile-Abigaiil-Morris.jpg", location: " Ohio,USA", popularity: 98, url: "abigaiilmorrisprofile.html" },
+      { id: 2, name: "Alektra Blue", image: "https://i.ibb.co.com/N6Nyw5fd/profile-Alektra-Blue.jpg", location: "Arizona,USA", popularity: 90, url: "alektrablueprofile.html" },
+      { id: 3, name: "Alena Croft", image: "https://i.ibb.co.com/BH7GR8XX/profile-Alena-Croft.jpg", location: "Arizona,USA", popularity: 93, url: "alenacroftprofile.html" },
+      { id: 4, name: "Aletta Ocean", image: "https://i.ibb.co.com/jk8kQpFt/profile-Alettea-Ocean.jpg", location: "Hungary", popularity: 88, url: "alettaoceanprofile.html" },
+      { id: 5, name: "Alura Jenson", image: "https://i.ibb.co.com/M57PptmY/profile-Alura-Jenson.jpg", location: "Pennsylvania,USA", popularity: 98, url: "alurajensonprofile.html" },
+      { id: 6, name: "Alexis Fawx", image: "https://i.ibb.co.com/hx6r8vmP/profile-Alexis-Fawx.jpg", location: "Pennsylvania,SA", popularity: 99, url: "alexisfawxprofile.html" },
+      { id: 7, name: "Alison Tyler", image: "https://i.ibb.co.com/G3HDpDTD/profilr-Alison-Tyler.jpg", location: "California,USA", popularity: 95, url: "alisontylerprofile.html" },
+      { id: 8, name: "Alyx Star", image: "https://i.ibb.co.com/rGCXhML5/profile-Alyx-Star.jpg", location: "Portland,Oregon,USA", popularity: 98, url: "alyxstarprofile.html" },
+      { id: 9, name: "Amber Alena", image: "https://i.ibb.co.com/Z6J7h7pj/profile-Amber-Alena.jpg", location: "Washington,USA", popularity: 98, url: "amberalenaprofile.html" },
+      { id: 10, name: "Amy Anderssen", image: "https://i.ibb.co.com/847D8m0Y/profile-Amy-Anderssen.jpg", location: "Ontario,Canada", popularity: 100, url: "amyanderssenprofile.html" },
+      { id: 11, name: "Angel Wicky", image: "https://i.ibb.co.com/Y4w13XgY/profile-Angel-Wicky.jpg", location: "Kraj Vysočina,Czech Republic", popularity: 99, url: "angelwickyprofile.html" },
+      { id: 12, name: "Angela White", image: "https://i.ibb.co.com/dwqkzB1t/profile-Angela-White.jpg", location: "Australia", popularity: 96, url: "angelawhiteprofile.html" },
+      { id: 13, name: "August Taylor", image: "https://i.ibb.co.com/38nxwsS/profile-August-Taylor.jpg", location: "Georgia,USA", popularity: 98, url: "augusttaylorprofile.html" },
+      { id: 14, name: "Anissa Kate", image: "https://i.ibb.co.com/Sw4Lxg6P/profile-Anissa-Kate.jpg", location: "Lyon,France", popularity: 94, url: "anissakateprofile.html" },
+      { id: 15, name: "Anna Bell Peaks", image: "https://i.ibb.co.com/mZ44cYZ/profile-Anna-Bell-Peaks.jpg", location: "California,USA", popularity: 96, url: "annabellpeaksprofile.html" },
+      { id: 16, name: "Ariella Ferrera", image: "https://i.ibb.co.com/ymyMKbhX/profile-Ariella-Ferrera.jpg", location: "Medellin,Colombia", popularity: 90, url: "ariellaferreraprofile.html" },
+      { id: 17, name: "Armani Black", image: "https://i.ibb.co.com/237SCqq6/profile-Armani-Black.jpg", location: "New York,USA", popularity: 92, url: "armaniblackprofile.html" },
+      { id: 18, name: "Annabel Redd", image: "https://i.ibb.co.com/zWtFYMGs/profile-Annabel-Redd.jpg", location: "Florida,USA", popularity: 95, url: "annabelreddprofile.html" },
+      { id: 19, name: "Ashton Blake", image: "https://i.ibb.co.com/KcFNDKrk/profile-Ashton-Blake.jpg", location: "Pittsburgh, Pennsylvania,USA", popularity: 97, url: "ashtonblakeprofile.html" },
+      { id: 20, name: "Aubrey Black", image: "https://i.ibb.co.com/ZpgHs9XQ/profile-Aubrey-Black.jpg", location: "East Coast,New Zealand", popularity: 93, url: "aubreyblackprofile.html" },
+      { id: 21, name: "Audrey Bitoni", image: "https://i.ibb.co.com/gbY0tpJJ/profile-Audey-Bitoni.jpg", location: "California,USA", popularity: 91, url: "audreybitoniprofile.html" },
+      { id: 22, name: "Ava Addams", image: "https://i.ibb.co.com/fzkGDgCd/profile-Ava-Addams.jpg", location: "Gibraltar,UK", popularity: 94, url: "avaaddamsprofile.html" },
+      { id: 23, name: "Ava Koxx", image: "https://i.ibb.co.com/8gQtvxvy/profile-Ava-Koxx.jpgg", location: "West Midlands,UK", popularity: 96, url: "avakoxxprofile.html" },
+      { id: 24, name: "Azul Hermosa", image: "https://i.ibb.co.com/dwvQ6zJp/profile-Azul-Hermosa.jpg", location: "Oregon,USA", popularity: 89, url: "azulhermosaprofile.html" },
+      { id: 25, name: "Bella Blu", image: "https://i.ibb.co.com/YBFPPmw7/profile-Bella-Blu.jpg", location: "New York,USA", popularity: 98, url: "bellabluprofile.html" },
+      { id: 26, name: "Blake Blossom", image: "https://i.ibb.co.com/mCYsg1sF/profile-Blake-Blossom.jpg", location: "California,USA", popularity: 95, url: "blakeblossomprofile.html" },
+      { id: 27, name: "Blanche Bradburry", image: "https://i.ibb.co.com/Vckffxsh/profile-Blanche-Bradburry.jpg", location: "Moravskoslezský kraj,Czech Republic", popularity: 93, url: "blanchebradburryprofile.html" },
+      { id: 28, name: "Blondie Bombshell", image: "https://i.ibb.co.com/1YWgtvLn/profile-Blondie-Bombshell.jpg", location: "Germany", popularity: 99,url: "blondiebombshell.html" },
+      { id: 29, name: "Brandi Love", image: "https://i.ibb.co.com/4wptdJG0/profile-Brandi-Love.jpg", location: "Dearborn,Michigan,USA", popularity: 97, url: "brandiloveprofile.html" },
+      { id: 30, name: "Brianna Banks", image: "https://i.ibb.co.com/CpYMHvvB/profile-Brianna-Banks.jpg", location: "Germany,USA", popularity: 96, url: "briannabanksprofile.html" },
+      { id: 31, name: "Bridgette B", image: "https://i.ibb.co.com/VpMg0XKt/profile-Bridgette-B.jpg", location: "Spain", popularity: 99,url: "bridgettebprofile.html" },
+      { id: 32, name: "Brittany Andrews", image: "https://i.ibb.co.com/VY7fjHGc/profile-Brittany-Andrews.jpg", location: "Wisconsin,USA", popularity: 92, url: "brittanyandrewsprofile.html" },
+      { id: 33, name: "Brooke Beretta", image: "https://i.ibb.co.com/qMkhsG90/profile-Brokke-Beretta.jpg", location: "California,USA", popularity: 98, url: "brookeberettaprofile.html" },
+      { id: 34, name: "Brooklyn Chase", image: "https://i.ibb.co.com/gL38wMV9/profile-Brooklyn-Chase.jpg", location: "San Diego,California,USA", popularity: 95, url: "brooklynchaseprofile.html" },
+      { id: 35, name: "Brooklyn Blue", image: "https://i.ibb.co.com/pj5R5Lr7/profile-Brooklyn-Blue.jpg", location: "London,England", popularity: 96, url: "brooklynblueprofile.html" },
+      { id: 36, name: "Bunny Madison", image: "https://i.ibb.co.com/zVmXQQmb/profile-Bunny-Madison.jpg", location: "Minnesota, United States", popularity: 97, url: "bunnymadisonprofile.html" },
+      { id: 37, name: "Brandi Bae", image: "https://i.ibb.co.com/SX8VWjS4/profile-Brandi-Bae.jpg", location: "Sacramento,California,USA", popularity: 98, url: "brandibaeprofile.html" },
+      { id: 38, name: "Capri Cavanni", image: "https://i.ibb.co.com/fGVrvFCJ/profile-Capri-Cavanni.jpg", location: "British Columbia,Canada", popularity: 94, url: "capricavanniprofile.html" },
+      { id: 39, name: "Carla Boom", image: "https://i.ibb.co.com/LdZdq468/profile-Carla-Boom.jpg", location: "Barcelona,Catalonia,Spain", popularity: 97, url: "carlaboomprofile.html" },
+      { id: 40, name: "Carmela Clutch", image: "https://i.ibb.co.com/wrZTSLSB/profile-Carmela-Clutch.jpg", location: "Puerto Rica,USA", popularity: 99, url: "carmelaclutchprofile.html" },
+      { id: 41, name: "Casca Akashova", image: "https://i.ibb.co.com/1Gn0yBLn/profile-Casca-Akashova.jpg", location: "Russia", popularity: 95, url: "cascaakashovaprofile.html" },
+      { id: 42, name: "Cathy Heaven", image: "https://i.ibb.co.com/rG1RGsGg/profile-Cathy-Heaven.jpg", location: "Debrecen,Hungary", popularity: 96, url: "cathyheavenprofile.html" },
+      { id: 43, name: "Caitlin Bell", image: "https://i.ibb.co.com/VW08VSdX/profile-Caitlin-Bell.jpg", location: "Georgia,USA", popularity: 91, url: "caitlinbellprofile.html" },
+      { id: 44, name: "Cali Carter", image: "https://i.ibb.co.com/V02NY25r/profile-Cali-Carter.jpg", location: "California,USA", popularity: 97, url: "calicarterprofile.html" },
+      { id: 45, name: "Canela Skin", image: "https://i.ibb.co.com/PGKG4shw/profile-Canela-Skin.jpg", location: "Cali,Colombia", popularity: 96, url: "canelaskinprofile.html" },
+      { id: 46, name: "Chantal Danielle", image: "https://i.ibb.co.com/0Rb8Qxsm/profile-Chantal-Danielle.jpg", location: "USA", popularity: 99, url: "chantaldanielleprofile.html" },
+      { id: 47, name: "Cherie Deville", image: "https://i.ibb.co.com/fGMmTbnG/profile-Cherie-Deville.jpg", location: "North Carolina,USA", popularity: 94, url: "cheriedevilleprofile.html" },
+      { id: 48, name: "Christie Stevens", image: "https://i.ibb.co.com/LdCz4VrC/profile-Christie-Stevens.jpg", location: "Salt Lake City,Utah,USA", popularity: 97, url: "christiestevnsprofile.html" },
+      { id: 49, name: "C.J Miles", image: "https://i.ibb.co.com/YFv4p7Zt/profile-Cj-Miles.jpg", location: "Philippines", popularity: 94, url: "cjmilesprofile.html" },
+      { id: 50, name: "Connie Perignon", image: "https://i.ibb.co.com/CgN7PCQ/profile-Connie-Perignon.jpg", location: "Taipei,Taiwan", popularity: 94, url: "connieperignonprofile.html" },
+      { id: 51, name: "Cory Chase", image: "https://i.ibb.co.com/DH3RFJGN/profile-Cory-Chase.jpg", location: "New Jersey,USA", popularity: 94, url: "corychaseprofile.html" },
+      { id: 52, name: "Courtney Taylor", image: "https://i.ibb.co.com/KcRKzv6f/profile-Courtney-Taylor.jpg", location: "California,USA", popularity: 94, url: "courtneytaylorprofile.html" },
+      { id: 53, name: "Crystal Rush", image: "https://i.ibb.co.com/fG9cpNvT/profile-Crystal-Rush.jpg", location: "Saint Petersburg,Russia", popularity: 94, url: "crystalrushprofile.html" },
+      { id: 54, name: "Danielle Renae", image: "https://i.ibb.co.com/pv6g9S3b/profile-Danielle-Renae.jpg", location: "California,USA", popularity: 94, url: "daniellerenaeprofile.html" },
+      { id: 55, name: "Darling Danika", image: "https://i.ibb.co.com/1tj1swWt/profile-Darling-Danika.jpg", location: "California,USA", popularity: 94, url: "darlingdanikaprofile.html" },
+      { id: 56, name: "Dee Williams", image: "https://i.ibb.co.com/svwt2C3J/profile-Dee-Williams.jpg", location: "Texas,USA", popularity: 94, url: "deewilliamsprofile.html" },
+      { id: 57, name: "Diamond Foxx", image: "https://i.ibb.co.com/gsRW2Yw/profile-Diamond-Foxx.jpg", location: "Georgia,USA", popularity: 94, url: "diamondfoxxprofile.html" },
+      { id: 58, name: "Diamond Jackson", image: "https://i.ibb.co.com/wNJMf3HJ/profile-Diamond-Jackson.jpg", location: "California,USA", popularity: 94, url: "diamondjacksonprofile.htmll" },
+      { id: 59, name: "Ebony Mystique", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "ebonymystiqueprofile.html" },
+      { id: 60, name: "Ember Snow", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Manila,Philippines", popularity: 94, url: "embersnowprofile.html" },
+      { id: 61, name: "Emily B", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Greater London,UK", popularity: 94, url: "emilybprofile.html" },
+      { id: 62, name: "Emma Hix", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "British Columbia,Canada", popularity: 94, url: "emmahixprofile.html" },
+      { id: 63, name: "Emma Leigh", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Essex,UK", popularity: 94, url: "emmaleighprofile.html" },
+      { id: 64, name: "Esperanza Gomez", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Caldas,Colombia", popularity: 94, url: "esperanzagomezprofile.html" },
+      { id: 65, name: "Eva Notty", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Tucson,Arizona,USA", popularity: 94, url: "evanottyprofile.html" },
+      { id: 66, name: "Eva Karera", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Liège, Belgium", popularity: 94, url: "evakareraprofile.html" },
+      { id: 67, name: "Farrah Dahl", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Louisiana,USA", popularity: 94, url: "farrahdahlprofile.html" },
+      { id: 68, name: "Gabbie Carter", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Austin,Texas,USA", popularity: 94, url: "gabbiecarterprofile.html" },
+      { id: 69, name: "GoGo FukMe", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Brooklyn,NY,USA", popularity: 94, url: "gogofukmeprofile.html" },
+      { id: 70, name: "Harmony Reigns", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "London,England", popularity: 94, url: "harmonyreignsprofile.html" },
+      { id: 71, name: "Halle Hayes", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "hallehayesprofile.html" },
+      { id: 72, name: "Harlow Harrison", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Florida,USA", popularity: 94, url: "harlowharrisonprofile.html" },
+      { id: 73, name: "Holly Halston", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "hollyhalstonprofile.html" },
+      { id: 74, name: "Holly Hotwife", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Texas,USA", popularity: 94, url: "hollyhotwifeprofile.html" },
+      { id: 75, name: "Isis Love", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Winnetka,California,USA", popularity: 94, url: "isisloveprofile.html" },
+      { id: 76, name: "Ivy Lebelle", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "LA,California,USA", popularity: 94, url: "ivylebelleprofile.html" },
+      { id: 77, name: "J.R. Carrington", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Tahoe City,California,USA", popularity: 94, url: "jrcarringtonprofile.html" },
+      { id: 78, name: "Jaclyn Taylor", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "New Jersey,USA", popularity: 94, url: "jaclyntaylorprofile.html" },
+      { id: 79, name: "Janet Mason", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "janetmasonprofile.html" },
+      { id: 80, name: "Jasmine Jae", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Birmingham,England", popularity: 94, url: "jasminejaeprofile.html" },
+      { id: 81, name: "Jasmine James", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "London,England", popularity: 94, url: "jasminejamesprofile.html" },
+      { id: 82, name: "Jenna Star", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Dallas,Texas,USA", popularity: 94, url: "jennastarprofile.html" },
+      { id: 83, name: "Jennifer Exxotic", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Dominican Republic", popularity: 94, url: "jenniferexxoticprofile.html" },
+      { id: 84, name: "Jesse Jane", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Texas,USA", popularity: 94, url: "jessejaneprofile.html" },
+      { id: 85, name: "Jewels Jade", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "jewelsjadeprofile.html" },
+      { id: 86, name: "Jewelz Blu", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Bonn,Germany", popularity: 94, url: "jewelzbluprofile.html" },
+      { id: 87, name: "Joanna Angel", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Brooklyn,NY,USA", popularity: 94, url: "joannaangelprofile.html" },
+      { id: 88, name: "Joslyn James", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "New York,USA", popularity: 94, url: "joslynjamesprofile.html" },
+      { id: 89, name: "Julia Ann", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "juliaannprofile.html" },
+      { id: 90, name: "Julianna Vega", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Cuba", popularity: 94, url: "juliannavegaprofile.html" },
+      { id: 91, name: "Julie Cash", image: "https://i.ibb.co.com/PZFRS5B8/profile-Julie-Cash.jpg", location: "Texas,USA", popularity: 94, url: "juliecashprofile.html" },
+      { id: 92, name: "Karma Rx", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "California,USA", popularity: 94, url: "karmarxprofile.html" },
+      { id: 93, name: "Karen Fisher", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Portland,Oregon,USA", popularity: 94, url: "karenfisherprofile.html" },
+      { id: 94, name: "Kailani Kai", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Hawaii,USA", popularity: 94, url: "kailanikaiprofile.html" },
+      { id: 95, name: "Kaden Kole", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Atlanta,Georgia,USA", popularity: 94, url: "kadenkoleprofile.html" },
+      { id: 96, name: "Katrina Thicc", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "USA", popularity: 94, url: "katrinathiccprofile.html" },
+      { id: 97, name: "Kayla Green", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Moscow,Russia", popularity: 94, url: "kaylagreenprofile.html" },
+      { id: 98, name: "Kayla Kayden", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Syracuse,NY,USA", popularity: 94, url: "kaylakaydenprofile.html" },
+      { id: 99, name: "Kayley Gunner", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Hawaii,USA", popularity: 94, url: "kayleygunnerprofile.html" },
+      { id: 100, name: "Kelly Madison", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Newport Beach,California,USA", popularity: 94, url: "kellymadisonprofile.html" },
+      { id: 101, name: "Kendra Lust", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Michigan,USA", popularity: 94, url: "kendralustprofile.html" },
+      { id: 102, name: "Kendra Sunderland", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Salem,Oregon,USA", popularity: 94, url: "kendrasunderlandprofile.html" },
+      { id: 103, name: "Kenzie Taylor", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kenziertaylorprofile.html" },
+      { id: 104, name: "Kerry Louise", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kerrylouiseprofile.html" },
+      { id: 105, name: "Kesha Ortega", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "keshaortegaprofile.html" },
+      { id: 106, name: "Kianna Dior", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiannadiorprofile.html" },
+      { id: 107, name: "Kiki Minaj", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kikiminajprofile.html" },
+      { id: 108, name: "Kissa Sins", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kissasinsprodile.html" },
+      { id: 109, name: "Kitana Montana", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kitanamontanaprofile.html" },
+      { id: 110, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 111, name: "La Paisita Oficial", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "lapaisitaoficialprofile.html" },
+      { id: 112, name: "LaSirena69", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "lasirena69.html" },
+      { id: 113, name: "Lacey Jane", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "laceyjaneprofile.html" },
+      { id: 114, name: "Lana Rhoades", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "lanarhoadesprofile.html" },
+      { id: 115, name: "Latin Beauty", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "latinbeautyprofile.html" },
+      { id: 116, name: "Lauren Pixie", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "laurenpixieprofile.html" },
+      { id: 117, name: "Lauren Phillips", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "laurenphillipsprofile.html" },
+      { id: 118, name: "Lela Star", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "lelastarprofile.html" },
+      { id: 119, name: "Lexi Luna", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "lexilunaprofile.html" },
+      { id: 120, name: "Halle Hayes", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 121, name: "Harlow Harrison", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 122, name: "Holly Halston", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 123, name: "Holly Hotwife", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 124, name: "Isis Love", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 125, name: "Ivy Lebelle", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 126, name: "J.R. Carrington", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 127, name: "Jaclyn Taylor", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 128, name: "Janet Mason", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 129, name: "Jasmine Jae", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 130, name: "Jasmine James", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 131, name: "Jenna Star", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 132, name: "Jennifer Exxotic", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 133, name: "Jesse Jane", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 134, name: "Jewels Jade", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 135, name: "Jewelz Blu", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 136, name: "Joanna Angel", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 137, name: "Joslyn James", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 138, name: "Julia Ann", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 139, name: "Julianna Vega", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 140, name: "Julie Cash", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 141, name: "Karma Rx", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 142, name: "Karen Fisher", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 143, name: "Kailani Kai", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 144, name: "Kaden Kole", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 145, name: "Katrina Thicc", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 146, name: "Kayla Green", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 147, name: "Kayla Kayden", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 148, name: "Kayley Gunner", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 149, name: "Kelly Madison", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "wdwd.html" },
+      { id: 150, name: "Kendra Lust", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kendralustprofile.html" },
+      { id: 151, name: "Kendra Sunderland", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kendrasunderlandprofile.html" },
+      { id: 152, name: "Kenzie Taylor", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kenziertaylorprofile.html" },
+      { id: 153, name: "Kerry Louise", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kerrylouiseprofile.html" },
+      { id: 154, name: "Kesha Ortega", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "keshaortegaprofile.html" },
+      { id: 155, name: "Kianna Dior", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiannadiorprofile.html" },
+      { id: 156, name: "Kiki Minaj", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kikiminajprofile.html" },
+      { id: 157, name: "Kissa Sins", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kissasinsprodile.html" },
+      { id: 158, name: "Kitana Montana", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kitanamontanaprofile.html" },
+      { id: 159, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 160, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 161, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 162, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 163, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 164, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" },
+      { id: 165, name: "Kiara Mia", image: "https://randomuser.me/api/portraits/women/47.jpg", location: "Zurich", popularity: 94, url: "kiaramiaprofile.html" }
+    ];
+    
+    // Pagination variables
+    let currentPage = 1;
+    const modelsPerPage = 24;
+    let totalPages = Math.ceil(modelData.length / modelsPerPage);
+    let currentFilter = 'popular';
+    let currentLetter = 'all';
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      setupEventListeners();
+      setupNavButtons();
+      renderModels();
+      updatePagination();
+    });
+    
+    // Setup navigation buttons
+    function setupNavButtons() {
+      // Desktop navigation
+      homeBtn.addEventListener('click', () => {
+        window.location.href = "index.html";
+      });
+      
+      // MODIFIED MODELS BUTTON BEHAVIOR
+      modelsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Just ensure this button stays active
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        modelsBtn.classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        mobileModelsBtn.classList.add('active');
+      });
+      
+      videosBtn.addEventListener('click', () => {
+        window.location.href = "videos.html";
+      });
+      
+      // 3D Button
+      threeDBtn.addEventListener('click', () => {
+        window.location.href = "3d.html";
+      });
+      
+      // Mobile navigation
+      mobileHomeBtn.addEventListener('click', () => {
+        window.location.href = "index.html";
+      });
+      
+      // MODIFIED MOBILE MODELS BUTTON BEHAVIOR
+      mobileModelsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Just ensure this button stays active
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        modelsBtn.classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        mobileModelsBtn.classList.add('active');
+        // Close mobile menu if open
+        mobileMenu.classList.remove('active');
+      });
+      
+      mobileVideosBtn.addEventListener('click', () => {
+        window.location.href = "videos.html";
+      });
+      
+      // Mobile 3D Button
+      mobileThreeDBtn.addEventListener('click', () => {
+        window.location.href = "3d.html";
+      });
+      
+      // Mobile menu toggle
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+      
+      // Highlight current page button
+      const currentPagePath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      if (currentPagePath.includes('index') || currentPagePath === '') {
+        homeBtn.classList.add('active');
+        mobileHomeBtn.classList.add('active');
+      } else if (currentPagePath.includes('models')) {
+        modelsBtn.classList.add('active');
+        mobileModelsBtn.classList.add('active');
+      } else if (currentPagePath.includes('videos')) {
+        videosBtn.classList.add('active');
+        mobileVideosBtn.classList.add('active');
+      } else if (currentPagePath.includes('3d')) {
+        threeDBtn.classList.add('active');
+        mobileThreeDBtn.classList.add('active');
+      }
+    }
+    
+    // Setup event listeners
+    function setupEventListeners() {
+      // Search trigger
+      searchTrigger.addEventListener('click', () => {
+        searchContainer.classList.toggle('active');
+        if (searchContainer.classList.contains('active')) {
+          searchInput.focus();
+        } else {
+          searchInput.value = '';
+          searchResults.innerHTML = '';
+        }
+      });
+      
+      // Search input
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+        searchModels(query);
+      });
+      
+      // Close search when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!searchContainer.contains(e.target) && e.target !== searchTrigger) {
+          searchContainer.classList.remove('active');
+          searchInput.value = '';
+          searchResults.innerHTML = '';
+        }
+      });
+      
+      // Header scroll effect
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+          mainHeader.classList.remove('hidden');
+          return;
+        }
+        
+        if (currentScroll > lastScroll && !mainHeader.classList.contains('hidden')) {
+          // Scroll down
+          mainHeader.classList.add('hidden');
+        } else if (currentScroll < lastScroll && mainHeader.classList.contains('hidden')) {
+          // Scroll up
+          mainHeader.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+      });
+      
+      // Filter buttons
+      popularBtn.addEventListener('click', () => {
+        popularBtn.classList.add('active');
+        alphabeticalBtn.classList.remove('active');
+        alphabetFilter.classList.remove('active');
+        currentFilter = 'popular';
+        currentPage = 1;
+        renderModels();
+        updatePagination();
+      });
+      
+      alphabeticalBtn.addEventListener('click', () => {
+        alphabeticalBtn.classList.add('active');
+        popularBtn.classList.remove('active');
+        alphabetFilter.classList.add('active');
+        currentFilter = 'alphabetical';
+        currentPage = 1;
+        renderModels();
+        updatePagination();
+      });
+      
+      // Alphabet buttons
+      document.querySelectorAll('.alphabet-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.alphabet-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentLetter = btn.dataset.letter;
+          currentPage = 1;
+          renderModels();
+          updatePagination();
+        });
+      });
+      
+      // Pagination buttons
+      prevPageBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderModels();
+          updatePagination();
+        }
+      });
+      
+      nextPageBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderModels();
+          updatePagination();
+        }
+      });
+      
+      // Page number buttons
+      pagination.addEventListener('click', (e) => {
+        if (e.target.classList.contains('page-btn') && !e.target.id) {
+          currentPage = parseInt(e.target.textContent);
+          renderModels();
+          updatePagination();
+        }
+      });
+
+      // Back to Top Button
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+    // Search models function with advanced filtering
+    function searchModels(query) {
+      if (query.length === 0) {
+        searchResults.innerHTML = '';
+        return;
+      }
+      
+      // Filter models based on query
+      const filteredModels = modelData.filter(model => 
+        model.name.toLowerCase().includes(query) || 
+        model.location.toLowerCase().includes(query)
+      );
+      
+      displaySearchResults(filteredModels);
+    }
+    
+    // Display search results with animations
+    function displaySearchResults(results) {
+      searchResults.innerHTML = '';
+      
+      if (results.length === 0) {
+        searchResults.innerHTML = `
+          <div class="no-results">
+            <i class="fas fa-search" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <p>No models found matching your search</p>
+          </div>
+        `;
+        return;
+      }
+      
+      results.slice(0, 5).forEach((model, index) => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'search-result-item';
+        resultItem.style.opacity = '0';
+        resultItem.style.transform = 'translateX(-10px)';
+        resultItem.style.transition = `all 0.3s ease-out ${index * 0.05}s`;
+        
+        resultItem.innerHTML = `
+          <img src="${model.image}" alt="${model.name}">
+          <div class="search-result-info">
+            <h3>${model.name}</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ${model.location} • <i class="fas fa-fire"></i> ${model.popularity}%</p>
+          </div>
+          <i class="fas fa-chevron-right" style="margin-left: auto; color: var(--text-secondary);"></i>
+        `;
+        
+        resultItem.addEventListener('click', () => {
+          // Redirect to model's custom URL when clicked
+          window.location.href = model.url;
+        });
+        
+        searchResults.appendChild(resultItem);
+        
+        // Trigger animation
+        setTimeout(() => {
+          resultItem.style.opacity = '1';
+          resultItem.style.transform = 'translateX(0)';
+        }, 50);
+      });
+    }
+    
+    // Render models based on current filter and page
+    function renderModels() {
+      modelsGrid.innerHTML = '';
+      
+      // Filter models based on current selection
+      let filteredModels = [...modelData];
+      
+      if (currentFilter === 'popular') {
+        filteredModels.sort((a, b) => b.popularity - a.popularity);
+      } else if (currentFilter === 'alphabetical') {
+        filteredModels.sort((a, b) => a.name.localeCompare(b.name));
+        
+        if (currentLetter !== 'all') {
+          filteredModels = filteredModels.filter(model => 
+            model.name.toLowerCase().startsWith(currentLetter)
+          );
+        }
+      }
+      
+      // Update total pages based on filtered models
+      totalPages = Math.ceil(filteredModels.length / modelsPerPage);
+      
+      // Get models for current page
+      const startIndex = (currentPage - 1) * modelsPerPage;
+      const endIndex = startIndex + modelsPerPage;
+      const modelsToShow = filteredModels.slice(startIndex, endIndex);
+      
+      // Render models with staggered animation
+      modelsToShow.forEach((model, index) => {
+        const modelCard = document.createElement('div');
+        modelCard.className = 'model-card';
+        modelCard.style.animationDelay = `${index * 0.05}s`;
+        
+        modelCard.innerHTML = `
+          <a href="${model.url}" class="model-card-link">
+            <div class="model-image-container">
+              <img src="${model.image}" alt="${model.name}" class="model-image">
+            </div>
+            <div class="model-info">
+              <h3 class="model-name">${model.name}</h3>
+              <div class="model-stats">
+                <div class="model-stat"><i class="fas fa-map-marker-alt"></i> ${model.location}</div>
+                <div class="model-stat"><i class="fas fa-fire"></i> ${model.popularity}%</div>
+              </div>
+            </div>
+          </a>
+        `;
+        
+        modelsGrid.appendChild(modelCard);
+      });
+    }
+    
+    // Update pagination buttons
+    function updatePagination() {
+      pagination.innerHTML = '';
+      
+      // Previous button
+      const prevBtn = document.createElement('button');
+      prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
+      prevBtn.id = 'prevPage';
+      prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderModels();
+          updatePagination();
+        }
+      });
+      pagination.appendChild(prevBtn);
+      
+      // Always show first page
+      const firstPageBtn = document.createElement('button');
+      firstPageBtn.className = `page-btn ${currentPage === 1 ? 'active' : ''}`;
+      firstPageBtn.textContent = '1';
+      firstPageBtn.addEventListener('click', () => {
+        currentPage = 1;
+        renderModels();
+        updatePagination();
+      });
+      pagination.appendChild(firstPageBtn);
+      
+      // Show dynamic page numbers based on current page
+      let startPage, endPage;
+      
+      if (totalPages <= 5) {
+        // Show all pages if total pages is 5 or less
+        startPage = 2;
+        endPage = totalPages - 1;
+      } else {
+        // Show pages around current page
+        if (currentPage <= 3) {
+          startPage = 2;
+          endPage = 5;
+        } else if (currentPage >= totalPages - 2) {
+          startPage = totalPages - 4;
+          endPage = totalPages - 1;
+        } else {
+          startPage = currentPage - 2;
+          endPage = currentPage + 2;
+        }
+      }
+      
+      // Show ellipsis if needed
+      if (startPage > 2) {
+        const ellipsis = document.createElement('span');
+        ellipsis.className = 'page-dots';
+        ellipsis.textContent = '...';
+        pagination.appendChild(ellipsis);
+      }
+      
+      // Show middle pages
+      for (let i = startPage; i <= endPage; i++) {
+        if (i < totalPages) {
+          const pageBtn = document.createElement('button');
+          pageBtn.className = `page-btn ${currentPage === i ? 'active' : ''}`;
+          pageBtn.textContent = i;
+          pageBtn.addEventListener('click', () => {
+            currentPage = i;
+            renderModels();
+            updatePagination();
+          });
+          pagination.appendChild(pageBtn);
+        }
+      }
+      
+      // Show ellipsis if needed
+      if (endPage < totalPages - 1) {
+        const ellipsis = document.createElement('span');
+        ellipsis.className = 'page-dots';
+        ellipsis.textContent = '...';
+        pagination.appendChild(ellipsis);
+      }
+      
+      // Always show last page if there's more than one page
+      if (totalPages > 1) {
+        const lastPageBtn = document.createElement('button');
+        lastPageBtn.className = `page-btn ${currentPage === totalPages ? 'active' : ''}`;
+        lastPageBtn.textContent = totalPages;
+        lastPageBtn.addEventListener('click', () => {
+          currentPage = totalPages;
+          renderModels();
+          updatePagination();
+        });
+        pagination.appendChild(lastPageBtn);
+      }
+      
+      // Next button
+      const nextBtn = document.createElement('button');
+      nextBtn.className = `page-btn ${currentPage === totalPages ? 'disabled' : ''}`;
+      nextBtn.id = 'nextPage';
+      nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+      nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderModels();
+          updatePagination();
+        }
+      });
+      pagination.appendChild(nextBtn);
+    }
+  </script>
+</body>
+</html>
