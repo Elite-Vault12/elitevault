@@ -1243,6 +1243,7 @@
     let totalPages = Math.ceil(modelData.length / modelsPerPage);
     let currentFilter = 'popular';
     let currentLetter = 'all';
+    let currentSearchQuery = '';
     
     // Initialize the page
     document.addEventListener('DOMContentLoaded', function() {
@@ -1259,10 +1260,8 @@
         window.location.href = "index.html";
       });
       
-      // MODIFIED MODELS BUTTON BEHAVIOR
       modelsBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Just ensure this button stays active
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         modelsBtn.classList.add('active');
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -1273,7 +1272,6 @@
         window.location.href = "videos.html";
       });
       
-      // 3D Button
       threeDBtn.addEventListener('click', () => {
         window.location.href = "3d.html";
       });
@@ -1283,15 +1281,12 @@
         window.location.href = "index.html";
       });
       
-      // MODIFIED MOBILE MODELS BUTTON BEHAVIOR
       mobileModelsBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Just ensure this button stays active
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         modelsBtn.classList.add('active');
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         mobileModelsBtn.classList.add('active');
-        // Close mobile menu if open
         mobileMenu.classList.remove('active');
       });
       
@@ -1299,12 +1294,10 @@
         window.location.href = "videos.html";
       });
       
-      // Mobile 3D Button
       mobileThreeDBtn.addEventListener('click', () => {
         window.location.href = "3d.html";
       });
       
-      // Mobile menu toggle
       mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
       });
@@ -1340,6 +1333,9 @@
         } else {
           searchInput.value = '';
           searchResults.innerHTML = '';
+          currentSearchQuery = '';
+          renderModels();
+          updatePagination();
         }
       });
       
@@ -1355,6 +1351,9 @@
           searchContainer.classList.remove('active');
           searchInput.value = '';
           searchResults.innerHTML = '';
+          currentSearchQuery = '';
+          renderModels();
+          updatePagination();
         }
       });
       
@@ -1381,6 +1380,9 @@
       
       // Filter buttons
       popularBtn.addEventListener('click', () => {
+        currentSearchQuery = '';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
         popularBtn.classList.add('active');
         alphabeticalBtn.classList.remove('active');
         alphabetFilter.classList.remove('active');
@@ -1391,6 +1393,9 @@
       });
       
       alphabeticalBtn.addEventListener('click', () => {
+        currentSearchQuery = '';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
         alphabeticalBtn.classList.add('active');
         popularBtn.classList.remove('active');
         alphabetFilter.classList.add('active');
@@ -1457,18 +1462,26 @@
     
     // Search models function with advanced filtering
     function searchModels(query) {
-      if (query.length === 0) {
+      currentSearchQuery = query.toLowerCase().trim();
+      
+      if (currentSearchQuery.length === 0) {
         searchResults.innerHTML = '';
+        currentPage = 1;
+        renderModels();
+        updatePagination();
         return;
       }
       
       // Filter models based on query
       const filteredModels = modelData.filter(model => 
-        model.name.toLowerCase().includes(query) || 
-        model.location.toLowerCase().includes(query)
+        model.name.toLowerCase().includes(currentSearchQuery) || 
+        (model.location && model.location.toLowerCase().includes(currentSearchQuery))
       );
       
       displaySearchResults(filteredModels);
+      currentPage = 1;
+      renderModels();
+      updatePagination();
     }
     
     // Display search results with animations
@@ -1496,7 +1509,7 @@
           <img src="${model.image}" alt="${model.name}">
           <div class="search-result-info">
             <h3>${model.name}</h3>
-            <p><i class="fas fa-map-marker-alt"></i> ${model.location} • <i class="fas fa-fire"></i> ${model.popularity}%</p>
+            <p><i class="fas fa-map-marker-alt"></i> ${model.location} • <i class="fas fa-fire"></i> ${model.popularity || 'N/A'}%</p>
           </div>
           <i class="fas fa-chevron-right" style="margin-left: auto; color: var(--text-secondary);"></i>
         `;
@@ -1523,8 +1536,16 @@
       // Filter models based on current selection
       let filteredModels = [...modelData];
       
-      if (currentFilter === 'popular') {
-        filteredModels.sort((a, b) => b.popularity - a.popularity);
+      // Apply search filter if there's a query
+      if (currentSearchQuery.length > 0) {
+        filteredModels = filteredModels.filter(model => 
+          model.name.toLowerCase().includes(currentSearchQuery) || 
+          (model.location && model.location.toLowerCase().includes(currentSearchQuery))
+        );
+      }
+      // Apply other filters if no search query
+      else if (currentFilter === 'popular') {
+        filteredModels.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
       } else if (currentFilter === 'alphabetical') {
         filteredModels.sort((a, b) => a.name.localeCompare(b.name));
         
@@ -1557,8 +1578,8 @@
             <div class="model-info">
               <h3 class="model-name">${model.name}</h3>
               <div class="model-stats">
-                <div class="model-stat"><i class="fas fa-map-marker-alt"></i> ${model.location}</div>
-                <div class="model-stat"><i class="fas fa-fire"></i> ${model.popularity}%</div>
+                <div class="model-stat"><i class="fas fa-map-marker-alt"></i> ${model.location || 'N/A'}</div>
+                <div class="model-stat"><i class="fas fa-fire"></i> ${model.popularity || 'N/A'}%</div>
               </div>
             </div>
           </a>
