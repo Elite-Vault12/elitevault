@@ -879,7 +879,7 @@
   <!-- Main Content -->
   <div class="main-content">
     <div class="page-title">
-      <h1>Exclusive Models</h1>
+      <h1>Exclusive Models (<span id="totalModelsCount">0</span>)</h1>
       <p>WHERE PLEASURE MEETS PERSONALITY</p>
     </div>
     
@@ -1331,6 +1331,21 @@
       { id: 347, name: "Shay Fox", image: "https://randomuser.me/api/portraits/women/155.jpg", location: "Los Angeles,California,USA", popularity: 99, url: "shayfoxprofile.html" },
       { id: 348, name: "Shawna Lenee", image: "https://randomuser.me/api/portraits/women/155.jpg", location: "Ohio,USA", popularity: 89, url: "shawnaleneeprofile.html" }
     ];
+
+     // Update total models count
+    function updateTotalModelsCount() {
+      const totalModels = modelData.length;
+      document.getElementById('totalModelsCount').textContent = totalModels;
+    }
+
+    // Call the function when the page loads
+   document.addEventListener('DOMContentLoaded', function() {
+      updateTotalModelsCount(); // Add this line
+      setupEventListeners();
+      setupNavButtons();
+      renderModels();
+      updatePagination();
+    });
     
     // Pagination variables
     let currentPage = 1;
